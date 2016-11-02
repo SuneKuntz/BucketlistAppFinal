@@ -1,0 +1,52 @@
+body{
+	background-image:url("bg-image.jpg"); 
+	background-size:cover; 
+}
+
+.done-true {
+  text-decoration: line-through;
+}
+
+h2 {
+  font-family: "arial";
+  color: rgba(0, 0, 0, 0.3);
+  
+}
+.unstyled {
+	font-family: "arial";
+}
+
+.contentwrapper{
+	width: 243px;
+	margin: auto;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+	margin-top: 30px;
+	border-radius: 2px;
+	padding: 10px;
+	background-color: white;
+	-webkit-transition: all ease 0.2s;
+} 
+
+.contentwrapper:hover{
+	margin-top: 28px;
+	box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.5);
+}
+
+#BucketButton{
+	width: 243px;
+}
+
+li{
+	list-style-type: none;
+	margin-bottom: 10px;
+	border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
+}
+
+ul{
+	float: right;
+	width: 100%;
+}
+
+.list_wrapper{
+
+}

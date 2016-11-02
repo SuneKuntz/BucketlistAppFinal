@@ -1,0 +1,56 @@
+<!doctype html>
+<meta charset="UTF-8">
+<!-- Linker vores Angular module i .JS filen -->
+<html ng-app="bucketApp">
+  <head>
+    <!-- Linker til Angular JS kildekode -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <!-- Linker til Googles 'Material Design' kildekode -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Linker tli Googles 'Material Design' kildekode -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <!-- Linker til Googles 'Material Design' kildekode -->
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <!-- Linker til vores Angular JS fil så resten af koden ved hvad vi refererer til -->
+    <script src="bucket.js"></script>
+    <!-- Linker til vores stylesheet -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="contentwrapper"><div class="header"><h2>Bucket List</h2></div>
+    <!-- Giver dette div vores controller som er defineret i Angular JS filen -->
+    <div ng-controller="bucketController as bucketList">
+      <!-- Tæller de bucketList punkter som er blevet markeret. Trykkes på knappen, aktiveres vores funktion i .JS filen som sletter de punkter -->
+      <span>{{bucketList.remaining()}} of {{bucketList.todos.length}} remaining</span>
+      <!-- Knappen som linker til vores slet funktion -->
+      [ <a href="" ng-click="bucketList.archive()">Slet</a> ]
+    
+    <!-- Wrapper til vores liste -->
+    <div class="list_wrapper">
+      <ul>
+        <!-- Looper vores data array igennem for at vise alle punkterne i vores bucket list -->
+        <li ng-repeat="todo in bucketList.todos">
+          <label>
+            <!-- Vores tjekboks som er styret af vores funktion i .JS filen. Trykkes på den, sættes det punkt til 'done' i vores data array -->
+            <input type="checkbox" checked ng-model="todo.done">
+            <!-- class som sætter punktet til 'done' i data arrayet -->
+            <span class="done-{{todo.done}}">{{todo.text}}</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+      
+      <!-- Inputfelt som ved hjælp af ng-submit tilføjer teksten til vores data array -->
+      <form ng-submit="bucketList.addTodo()">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <!-- Gemmer den tekst vi har indtastet i inputfeltet til data arrayet -->
+          <input class="mdl-textfield__input" type="text" ng-model="bucketList.todoText">
+          <label class="mdl-textfield__label">Tilføj...</label>
+        </div>
+        <!-- Knap som kalder funktionen i til at tilføje dataerne i arrayet -->
+        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="BucketButton" type="submit">
+      </form>
+    </div>
+    </div>
+  </body>
+</html>
